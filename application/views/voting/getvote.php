@@ -34,7 +34,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open_multipart('voting/getvote'); ?>
+            <?= form_open_multipart('voting/resultVote'); ?>
             <div class="modal-body">
                 <div class="form-group">
                     <p>Apakah anda yakin ingin memilih <?= $candidate['nama_candidate']; ?> ?</p>

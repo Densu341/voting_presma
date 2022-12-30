@@ -13,13 +13,8 @@ class Vote_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function add_result()
+    public function add_result($data)
     {
-        $data = [
-            'id_voters' => $this->input->post('id_voters'),
-            'id_candidate' => $this->input->post('id_candidate'),
-            'take' => $this->input->post('take'),
-        ];
         $this->db->insert('result', $data);
     }
 }

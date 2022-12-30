@@ -39,6 +39,15 @@ class Voters_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_voters_by_nim($nim)
+    {
+        $this->db->select('*');
+        $this->db->from('voters');
+        $this->db->where('nim', $nim);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
     public function update_voters()
     {
         $data = [
@@ -54,5 +63,15 @@ class Voters_model extends CI_Model
     {
         $this->db->where('id_voters', $id_voters);
         $this->db->delete('voters');
+    }
+    
+    public function wasVote($param)
+    {
+        $data = [
+            'value' => $param['value']
+        ];
+
+        $this->db->where('id_voters', $param['id']);
+        $this->db->update('voters', $data);
     }
 }
