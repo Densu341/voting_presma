@@ -16,6 +16,7 @@ class Committee extends CI_Controller
         $this->load->model('faculty_model');
         $this->load->model('prodi_model');
         $this->load->model('vote_model');
+        $this->load->model('Result_model');
     }
 
     public function index()
@@ -425,11 +426,18 @@ class Committee extends CI_Controller
         $data['result'] = $this->vote_model->get_result();
         $data['candidate'] = $this->candidate_model->get_candidate();
 
+        $data['persentase'] = $this->Result_model->get_result();
+
+        $data['jml'] = COUNT($data['persentase']);
+
+
+        // var_dump($data['persentase']);
+        // die;
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('committee/result', $data);
-        // var_dump($data['result']);
         $this->load->view('templates/footer');
     }
     //end hasil voting
