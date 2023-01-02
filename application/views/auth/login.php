@@ -1,11 +1,18 @@
 <div class="container">
-
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="text-center">
+        <img src="<?= base_url('assets/img/logo_si.png') ?>" alt="logo" width="70px" height="70px" class="img-fluid">
+        <h1 class="font-weight-bold text-light">SISTEM INFORMASI VOTING</h1>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Outer Row -->
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card o-hidden border-0 shadow-lg mb-5">
         <div class="row mb-0">
           <div class="col">
             <div class="text-center">
@@ -22,7 +29,7 @@
             <div class="col-lg">
               <div class="p-4">
                 <div class="text-center">
-                  <h1 class="h4 text-gray-700 mb-4">E-Voting Login</h1>
+                  <h1 class="h4 text-gray-700 mb-4">Login</h1>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
                 <form class="user" method="POST" action="<?= base_url('auth'); ?>">
@@ -41,9 +48,6 @@
                 <hr>
                 <div class="text-center">
                   <a class="small" href="forgot-password.html">Forgot Password?</a>
-                </div>
-                <div class="text-center">
-                  <a class="small" href="<?= base_url() ?>auth/register">Create an Account!</a>
                 </div>
               </div>
             </div>

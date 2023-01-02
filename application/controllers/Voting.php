@@ -17,6 +17,7 @@ class Voting extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
         $this->load->view('voting/index', $data);
         $this->load->view('templates/footer');
     }
@@ -29,10 +30,11 @@ class Voting extends CI_Controller
             'matches' => 'NIM tidak terdaftar!'
         ]);
         if (!$this->form_validation->run()) {
-            $data['title'] = 'Mobile Voting';
+            $data['title'] = 'Detail Candidate';
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
             $data['candidate'] = $this->candidate_model->get_candidate_by_id($id_candidate);
             $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar', $data);
             $this->load->view('voting/getvote', $data);
             $this->load->view('templates/footer');
         } else {
@@ -53,7 +55,7 @@ class Voting extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gunakan Nim Yang sesuai!</div>');
             redirect('voting');
         } else {
-            if($voters['value'] == 1){
+            if ($voters['status'] == 1) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf anda tidak bisa melakukan voting, karena kesempatan sudah digunakan!!</div>');
                 redirect('voting');
             } else {
@@ -65,7 +67,7 @@ class Voting extends CI_Controller
 
                 $data_voters = [
                     'id' => $voters['id_voters'],
-                    'value' => 1
+                    'status' => 1
                 ];
 
                 $this->Vote_model->add_result($datavoting);
@@ -73,7 +75,7 @@ class Voting extends CI_Controller
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Terima kasih telah memberikan suara!</div>');
                 redirect('voting');
-                }
+            }
         }
     }
 }
