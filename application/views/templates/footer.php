@@ -1,11 +1,7 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Voting Presma <?= date('Y'); ?></span>
-    </div>
-  </div>
-</footer>
+<div class="footer container-fluid">
+  <p>&copy; <?= date('Y') == 2020 ? date('Y') : '2020-' . date('Y') ?> Voting Presma </p>
+</div>
 <!-- End of Footer -->
 
 </div>

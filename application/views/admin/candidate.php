@@ -38,7 +38,7 @@
                                 <td><img src="<?= base_url() ?>assets/img/candidate/<?= $c['foto']; ?>" class="img-thumbnail" width="50px"></td>
                                 <td>
                                     <a href="" class="badge badge-primary " data-toggle="modal" data-target="#editCandidateModal<?= $c['id_candidate']; ?>"><i class="fas fa-pen-square" aria-hidden="true"></i></a>
-                                    <a href="" class="badge badge-danger " data-toggle="modal" data-target="#deleteCandidateModal" onclick="$('#deleteCandidateModal #formDelete').attr('action', '<?= base_url() ?>committee/deletecandidate/<?= $c['id_candidate']; ?>')"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                                    <a href="" class="badge badge-danger " data-toggle="modal" data-target="#deleteCandidateModal" onclick="$('#deleteCandidateModal #formDelete').attr('action', '<?= base_url() ?>admin/deletecandidate/<?= $c['id_candidate']; ?>')"><i class="fas fa-trash" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -62,7 +62,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open_multipart('committee/addcandidate'); ?>
+            <?= form_open_multipart('admin/addcandidate'); ?>
             <div class="modal-body">
                 <div class="form-group">
                     <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM">
@@ -114,7 +114,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <?= form_open_multipart('committee/editcandidate/' . $c['id_candidate']); ?>
+                <?= form_open_multipart('admin/editcandidate/' . $c['id_candidate']); ?>
                 <input type="hidden" name="id_candidate" value="<?= $c['id_candidate']; ?>">
                 <div class="modal-body">
                     <div class="form-group">

@@ -7,13 +7,13 @@
     <div class="container-fluid">
         <div class="row mb-3">
             <?php foreach ($persentase as $p) : ?>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?= base_url() ?>assets/img/candidate/<?= $p['foto']; ?>" alt="Card image cap">
+                <div class="col d-flex justify-content-center">
+                    <div class="card text-center">
                         <div class="card-body text-center">
+                            <img class=" thumbnail rounded img-fluid" width="150" height="150" src="<?= base_url() ?>assets/img/candidate/<?= $p['foto']; ?>" alt="Card image cap">
                             <h5 class="card-title"><?= $p['nama_candidate']; ?></h5>
                             <p class="card-text">mendapatkan</p>
-                            <span class="btn btn-primary d-flex justify-content-center"><?= (int)(($p['total_vote']/$jml)*100) ?> % <br> dengan perolehan <?= $p['total_vote']; ?> suara</span>
+                            <span class="btn btn-primary d-flex justify-content-center"><?= round(($p['total_vote'] / $jml) * 100) ?> % <br> dengan perolehan <?= $p['total_vote']; ?> suara</span>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">NIM</th>
-                    <th scope="col">ID Candidate</th>
+                    <th scope="col">Candidate</th>
                     <th scope="col">Take</th>
                 </tr>
             </thead>

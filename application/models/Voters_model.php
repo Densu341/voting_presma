@@ -64,11 +64,11 @@ class Voters_model extends CI_Model
         $this->db->where('id_voters', $id_voters);
         $this->db->delete('voters');
     }
-    
+
     public function wasVote($param)
     {
         $data = [
-            'value' => $param['value']
+            'status' => $param['status']
         ];
 
         $this->db->where('id_voters', $param['id']);

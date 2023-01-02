@@ -19,10 +19,10 @@
                             <thead>
                                 <tr>
                                     <!-- <th scope="col">No</th> -->
+                                    <th scope="col">#</th>
                                     <th scope="col">NIM</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Prodi</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Opsi</th>
                                 </tr>
                             </thead>
@@ -30,13 +30,12 @@
                                 <?php $i = 1; ?>
                                 <?php foreach ($voters as $v) : ?>
                                     <tr>
-                                        <!-- <th scope="row"><?= $i; ?></th> -->
+                                        <th scope="row"><?= $i; ?></th>
                                         <td><?= $v['nim']; ?></td>
                                         <td><?= $v['nama_voters']; ?></td>
                                         <td>
                                             <?= $v['nama_prodi']; ?>
                                         </td>
-                                        <td><?= $v['value']; ?></td>
                                         <td>
                                             <a href="" class="badge badge-primary" data-toggle="modal" data-target="#editVotersModal<?= $v['id_voters']; ?>"><i class="fas fa-pen-square" aria-hidden="true"></i></a>
                                             <a href="" class="badge badge-danger " data-toggle="modal" data-target="#deleteVotersModal" onclick="$('#deleteVotersModal #formDelete').attr('action', '<?= base_url() ?>committee/deletevoters/<?= $v['id_voters']; ?>')"><i class="fas fa-trash" aria-hidden="true"></i></a>
