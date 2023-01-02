@@ -126,6 +126,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Candidate';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
+        $data['prodi'] = $this->prodi_model->getProdi();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -165,8 +166,9 @@ class Admin extends CI_Controller
         $data['title'] = 'Data Candidate';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
-        $data['candidate'] = $this->candidate_model->get_candidate_by_id();
+        $data['candidate'] = $this->candidate_model->get_candidate_by_id('1');
         $data['prodi'] = $this->db->get('prodi')->result_array();
+
         $this->form_validation->set_rules('nim', 'NIM', 'required|trim');
         $this->form_validation->set_rules('nama_candidate', 'Nama', 'required|trim');
         $this->form_validation->set_rules('id_prodi', 'Prodi', 'required|trim');
@@ -185,6 +187,7 @@ class Admin extends CI_Controller
             $id_prodi = $this->input->post('id_prodi');
             $visi = $this->input->post('visi');
             $misi = $this->input->post('misi');
+
             // cek jika ada gambar yang akan diupload
             $upload_image = $_FILES['foto']['name'];
             if ($upload_image) {
@@ -205,7 +208,15 @@ class Admin extends CI_Controller
                     echo $this->upload->display_errors();
                 }
             }
-            $this->db->set('nama_candidate', $nama_candidate);
+
+            $update = [
+                'nama_candidate' => $nama_candidate,
+                'id_prodi' => $id_prodi,
+                'visi' => $visi,
+                'misi' => $misi
+            ];
+
+            $this->db->set($update);
             $this->db->where('nim', $nim);
             $this->db->update('candidate');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Candidate has been updated!</div>');

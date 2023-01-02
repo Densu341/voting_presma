@@ -118,7 +118,7 @@
                 <input type="hidden" name="id_candidate" value="<?= $c['id_candidate']; ?>">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM" value="<?= $c['nim']; ?>">
+                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM" value="<?= $c['nim']; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="nama_candidate" name="nama_candidate" placeholder="Nama Candidate" value="<?= $c['nama_candidate']; ?>">
