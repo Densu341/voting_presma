@@ -121,6 +121,7 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
 
+    //candidate Menu
     public function candidate()
     {
         $data['title'] = 'Candidate';
@@ -166,7 +167,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Data Candidate';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
-        $data['candidate'] = $this->candidate_model->get_candidate_by_id('1');
+        $data['candidate'] = $this->candidate_model->get_candidate_by_id();
         $data['prodi'] = $this->db->get('prodi')->result_array();
 
         $this->form_validation->set_rules('nim', 'NIM', 'required|trim');
@@ -187,16 +188,18 @@ class Admin extends CI_Controller
             $id_prodi = $this->input->post('id_prodi');
             $visi = $this->input->post('visi');
             $misi = $this->input->post('misi');
+            $id_candidate = $this->input->post('id_candidate');
 
             // cek jika ada gambar yang akan diupload
             $upload_image = $_FILES['foto']['name'];
+
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|svg';
+                $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size']     = '2048';
                 $config['upload_path'] = './assets/img/candidate/';
-                $config['file_name'] = $nim;
-                $config['overwrite'] = true;
+
                 $this->load->library('upload', $config);
+
                 if ($this->upload->do_upload('foto')) {
                     $old_image = $data['candidate']['foto'];
                     if ($old_image != 'default.jpg') {
@@ -209,16 +212,14 @@ class Admin extends CI_Controller
                 }
             }
 
-            $update = [
-                'nama_candidate' => $nama_candidate,
-                'id_prodi' => $id_prodi,
-                'visi' => $visi,
-                'misi' => $misi
-            ];
-
-            $this->db->set($update);
-            $this->db->where('nim', $nim);
+            $this->db->set('nim', $nim);
+            $this->db->set('nama_candidate', $nama_candidate);
+            $this->db->set('id_prodi', $id_prodi);
+            $this->db->set('visi', $visi);
+            $this->db->set('misi', $misi);
+            $this->db->where('id_candidate', $id_candidate);
             $this->db->update('candidate');
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Candidate has been updated!</div>');
             redirect('admin/candidate');
         }
@@ -230,5 +231,53 @@ class Admin extends CI_Controller
         $this->candidate_model->delete_candidate($id_candidate);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Candidate has been deleted!</div>');
         redirect('admin/candidate');
+    }
+    //end of menu candidate
+
+    //menu user management
+    public function m_user()
+    {
+        $data['title'] = 'Users Management';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->db->where('id_user !=', 1);
+        $data['m_user'] = $this->db->get('user')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/m_user', $data);
+        $this->load->view('templates/footer');
+    }
+
+    //fungsi aktifkan user
+    public function aktifkan($id_user)
+    {
+        $this->db->set('is_active', 1);
+        $this->db->where('id_user', $id_user);
+        $this->db->update('user');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been activated!</div>');
+        redirect('admin/m_user');
+    }
+
+    //fungsi nonaktifkan user
+    public function nonaktifkan($id_user)
+    {
+        $this->db->set('is_active', 0);
+        $this->db->where('id_user', $id_user);
+        $this->db->update('user');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deactivated!</div>');
+        redirect('admin/m_user');
+    }
+
+    //fungsi hapus user
+    public function deleteuser($id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        $this->db->delete('user');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted!</div>');
+        redirect('admin/m_user');
     }
 }

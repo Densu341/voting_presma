@@ -61,38 +61,38 @@ class Candidate_model extends CI_Model
         return $query->row_array();
     }
 
-    private function _editImage()
-    {
-        $config['upload_path']          = './assets/img/candidate/';
-        $config['allowed_types']        = 'svg|gif|jpg|png';
-        $config['file_name']            = $this->input->post('id_candidate');
-        $config['overwrite']            = true;
-        $config['max_size']             = 2048; // 2MB
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+    // private function _editImage()
+    // {
+    //     $config['upload_path']          = './assets/img/candidate/';
+    //     $config['allowed_types']        = 'svg|gif|jpg|png';
+    //     $config['file_name']            = $this->input->post('id_candidate');
+    //     $config['overwrite']            = true;
+    //     $config['max_size']             = 2048; // 2MB
+    //     $config['max_width']            = 1024;
+    //     $config['max_height']           = 768;
 
-        $this->load->library('upload', $config);
+    //     $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('foto')) {
-            return $this->upload->data("file_name");
-        }
+    //     if ($this->upload->do_upload('foto')) {
+    //         return $this->upload->data("file_name");
+    //     }
 
-        return $this->input->post('old_image');
-    }
+    //     return $this->input->post('old_image');
+    // }
 
-    public function update_candidate()
-    {
-        $data = [
-            'nim' => $this->input->post('nim'),
-            'nama_candidate' => $this->input->post('nama_candidate'),
-            'id_prodi' => $this->input->post('id_prodi'),
-            'foto' => $this->_editImage(),
-            'visi' => $this->input->post('visi'),
-            'misi' => $this->input->post('misi'),
-        ];
-        $this->db->where('id_candidate', $this->input->post('id_candidate'));
-        $this->db->update('candidate', $data);
-    }
+    // public function update_candidate()
+    // {
+    //     $data = [
+    //         'nim' => $this->input->post('nim'),
+    //         'nama_candidate' => $this->input->post('nama_candidate'),
+    //         'id_prodi' => $this->input->post('id_prodi'),
+    //         'foto' => $this->_editImage(),
+    //         'visi' => $this->input->post('visi'),
+    //         'misi' => $this->input->post('misi'),
+    //     ];
+    //     $this->db->where('id_candidate', $this->input->post('id_candidate'));
+    //     $this->db->update('candidate', $data);
+    // }
 
     public function delete_candidate($id_candidate)
     {

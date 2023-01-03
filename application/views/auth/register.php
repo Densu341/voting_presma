@@ -1,5 +1,13 @@
 <div class="container">
 
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="text-center">
+        <h2 class="font-weight-bold text-light">SISTEM INFORMASI VOTING</h2>
+      </div>
+    </div>
+  </div>
+
   <div class="col-lg-5 mx-auto">
     <div class="card o-hidden border-0 shadow-lg my-4">
       <div class="row mb-0">
