@@ -45,10 +45,12 @@ class Committee extends CI_Controller
         } else {
             $name = $this->input->post('name');
             $email = $this->input->post('email');
+
             // cek jika ada gambar yang akan diupload
             $upload_image = $_FILES['image']['name'];
+            
             if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png|svg';
+                $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size']     = '2048';
                 $config['upload_path'] = './assets/img/profile/';
                 $this->load->library('upload', $config);
