@@ -167,7 +167,6 @@ class Admin extends CI_Controller
         $data['title'] = 'Data Candidate';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
-        $data['candidate'] = $this->candidate_model->get_candidate_by_id();
         $data['prodi'] = $this->db->get('prodi')->result_array();
 
         $this->form_validation->set_rules('nim', 'NIM', 'required|trim');
@@ -189,6 +188,7 @@ class Admin extends CI_Controller
             $visi = $this->input->post('visi');
             $misi = $this->input->post('misi');
             $id_candidate = $this->input->post('id_candidate');
+            $data['candidate'] = $this->candidate_model->get_candidate_by_id($id_candidate);
 
             // cek jika ada gambar yang akan diupload
             $upload_image = $_FILES['foto']['name'];
