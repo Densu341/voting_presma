@@ -118,7 +118,7 @@
                 <input type="hidden" name="id_candidate" value="<?= $c['id_candidate']; ?>">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM" value="<?= $c['nim']; ?>" readonly>
+                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM" value="<?= $c['nim']; ?>">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="nama_candidate" name="nama_candidate" placeholder="Nama Candidate" value="<?= $c['nama_candidate']; ?>">
@@ -145,7 +145,7 @@
                                 <div class="col-sm-9">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="foto" name="foto">
-                                        <label class="custom-file-label" for="image">Choose file</label>
+                                        <label class="custom-file-label" for="foto">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
                 </div>
                 <?= form_close(); ?>
             </div>
