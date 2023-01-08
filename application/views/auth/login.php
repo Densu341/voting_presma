@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-1">
     <div class="col">
       <div class="text-center">
+        <img src="<?= base_url('assets/img/logo_si.png') ?>" alt="logo" width="70px" height="70px" class="img-fluid">
         <h2 class="font-weight-bold text-light">SISTEM INFORMASI VOTING</h2>
       </div>
     </div>
@@ -46,7 +47,8 @@
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  <!-- term and policy -->
+                  <input type="checkbox" checked class="small"> Setujui Syarat dan Ketentuan
                 </div>
                 <div class="text-center">
                   <a class="small" href="<?= base_url() ?>auth/register/">Create an Account!</a>
@@ -54,11 +56,11 @@
               </div>
             </div>
           </div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
         </div>
       </div>
-
     </div>
-
   </div>
-
 </div>

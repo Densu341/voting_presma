@@ -3,13 +3,14 @@
   <div class="row justify-content-center">
     <div class="col">
       <div class="text-center">
+        <img src="<?= base_url('assets/img/logo_si.png') ?>" alt="logo" width="70px" height="70px" class="img-fluid">
         <h2 class="font-weight-bold text-light">SISTEM INFORMASI VOTING</h2>
       </div>
     </div>
   </div>
 
   <div class="col-lg-5 mx-auto">
-    <div class="card o-hidden border-0 shadow-lg my-4">
+    <div class="card o-hidden border-0 shadow-lg my-2">
       <div class="row mb-0">
         <div class="col">
           <div class="text-center">
@@ -23,7 +24,7 @@
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col-lg">
-            <div class="p-4">
+            <div class="p-3">
               <div class="text-center">
                 <h1 class="h5 text-gray-700 mb-3">Create an Account!</h1>
               </div>
@@ -59,6 +60,9 @@
               </div>
             </div>
           </div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
         </div>
       </div>
     </div>

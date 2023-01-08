@@ -26,8 +26,8 @@
     left: 0;
     bottom: 0;
     height: 30px;
-    background-color: grey;
-    color: white;
+    background-color: #eaeaea;
+    color: black;
     text-align: center;
   }
 </style>

@@ -16,10 +16,10 @@ class Voting extends CI_Controller
         $data['title'] = 'Mobile Voting';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['candidate'] = $this->candidate_model->get_candidate();
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/vote_header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('voting/index', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/vote_footer');
     }
 
     public function getvote($id_candidate)
@@ -33,10 +33,10 @@ class Voting extends CI_Controller
             $data['title'] = 'Detail Candidate';
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
             $data['candidate'] = $this->candidate_model->get_candidate_by_id($id_candidate);
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/vote_header', $data);
+            // $this->load->view('templates/topbar', $data);
             $this->load->view('voting/getvote', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/vote_footer');
         } else {
             $this->Vote_model->add_result();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Terima kasih telah memberikan suara!</div>');

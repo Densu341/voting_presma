@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #eaeaea;">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
@@ -27,7 +27,6 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">NIM</th>
                     <th scope="col">Candidate</th>
                     <th scope="col">Take</th>
                 </tr>
@@ -37,7 +36,6 @@
                 <?php foreach ($result as $r) : ?>
                     <tr>
                         <th scope="row"><?= $no; ?></th>
-                        <td><?= $r['nim']; ?></td>
                         <td><?= $r['nama_candidate']; ?></td>
                         <td><?= $r['take']; ?></td>
                     </tr>

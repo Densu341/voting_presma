@@ -1,6 +1,6 @@
 <!-- Footer -->
 <div class="footer container-fluid">
-  <p>&copy; <?= date('Y') == 2020 ? date('Y') : '2020-' . date('Y') ?> Voting Presma </p>
+  <p class="text-muted small">&copy; <?= date('Y') == 2020 ? date('Y') : '2020-' . date('Y') ?> Voting Presma </p>
 </div>
 <!-- End of Footer -->
 
